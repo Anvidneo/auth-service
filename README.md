@@ -118,5 +118,20 @@ Service runs on port 8080 by default.
 
 ---
 
+## 🐳 Run with Docker
+
+1. Build the Docker image:
+   ```sh
+   docker build -t auth-service .
+   ```
+2. Run the container:
+   ```sh
+   docker run --name auth-service-container -p 8080:8080 -e SPRING_PROFILES_ACTIVE=local auth-service
+   ```
+
+The app will be available at http://localhost:8080
+
+---
+
 ## 📄 License
 MIT License
