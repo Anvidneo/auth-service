@@ -1,0 +1,16 @@
+package com.bank_dugongo.auth_service.repositories;
+
+import com.bank_dugongo.auth_service.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
+    Optional<User> findByUsername(String username);
+    
+    Optional<User> findByIdAndIsActiveTrue(Integer id);
+    
+    boolean existsByUsername(String username);
+}

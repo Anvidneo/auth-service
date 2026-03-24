@@ -1,0 +1,210 @@
+openapi: 3.0.1
+info:
+  title: Bank Dugongo
+  description: ''
+  version: 1.0.0
+tags: []
+paths:
+  /auth:
+    post:
+      summary: Register User
+      deprecated: false
+      description: ''
+      tags: []
+      parameters:
+        - name: Content-Type
+          in: header
+          description: ''
+          required: false
+          example: application/json
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            example:
+              username: juan.botero
+              password: '1000902190'
+              age: 25
+              name: Juan
+              lastName: Botero
+              email: juan.botero@example.com
+              documentType: 1
+              documentNumber: '1000902190'
+              phone: '+573192288710'
+              riskProfile: MEDIUM
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              example: ''
+          headers: {}
+      security: []
+    patch:
+      summary: Update User
+      deprecated: false
+      description: ''
+      tags: []
+      parameters:
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          example: application/json
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+                - username
+            example:
+              username: juan.botero.updated
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              example:
+                id: 1
+                username: juan.botero.updated
+                customerId: 2
+                isActive: true
+                lastLogin: '2026-03-17T00:34:01.069324'
+                createdAt: '2026-03-17T00:32:12.58011'
+          headers: {}
+      security:
+        - bearer: []
+    delete:
+      summary: Soft Delete
+      deprecated: false
+      description: ''
+      tags: []
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              example: ''
+          headers: {}
+      security:
+        - bearer: []
+  /auth/login:
+    post:
+      summary: Login
+      deprecated: false
+      description: ''
+      tags: []
+      parameters:
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          example: application/json
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - password
+            example:
+              username: juan.botero
+              password: '1000902190'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              example:
+                token: >-
+                  eyJhbGciOiJIUzUxMiJ9.eyJjdXN0b21lcklkIjoyLCJ1c2VySWQiOjEsInN1YiI6Imp1YW4uYm90ZXJvIiwiaWF0IjoxNzczNzI1NTk0LCJleHAiOjE3NzM4MTE5OTR9.i2MNMYjoifKUvryxOsH2OwSuz48mpMtfCVme25O4vt2xsFbPjMz7ALibWoek8F2h11OAtxN9c69MewXRJuiRJA
+                username: juan.botero
+                expiresIn: 86400000
+          headers: {}
+      security: []
+  /auth/validate:
+    get:
+      summary: Validate Token
+      deprecated: false
+      description: ''
+      tags: []
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              example:
+                valid: true
+          headers: {}
+      security:
+        - bearer: []
+  /auth/me:
+    get:
+      summary: Get Info User
+      deprecated: false
+      description: ''
+      tags: []
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              example:
+                id: 1
+                username: juan.botero
+                customerId: 2
+                isActive: true
+                lastLogin: '2026-03-17T00:34:01.069324'
+                createdAt: '2026-03-17T00:32:12.58011'
+          headers: {}
+      security:
+        - bearer: []
+components:
+  schemas: {}
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+servers: []

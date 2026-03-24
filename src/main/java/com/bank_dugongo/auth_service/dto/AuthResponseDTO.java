@@ -1,0 +1,16 @@
+package com.bank_dugongo.auth_service.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class AuthResponseDTO {
+    private String token;
+
+    private String username;
+
+    private Long expiresIn;
+}

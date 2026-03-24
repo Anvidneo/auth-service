@@ -1,0 +1,54 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.3'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.bank-dugongo'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot Starter dependencies (para desarrollo web y manejo de datos)
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+
+	// Spring Data JPA (Manejo de base de datos)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Driver de PostgreSQL (para conectarse a la base de datos)
+	runtimeOnly 'org.postgresql:postgresql'
+
+	// Spring Security dependency (para manejo de seguridad)
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// JWT dependencies (para manejo de tokens de autenticación)
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
+
+	// Spring Boot Starter Validation (para validación de datos)
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// Lombok (para reducir el código boilerplate)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Spring Boot DevTools (para desarrollo más rápido y variables de entorno en .env)
+	implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

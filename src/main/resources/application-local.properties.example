@@ -1,0 +1,8 @@
+# Local development configuration - DO NOT COMMIT
+# This file overrides application.properties for local development
+
+# Database configuration
+spring.datasource.password=your-database-password
+
+# JWT configuration
+jwt.secret=your-secret-key-for-jwt-signing
